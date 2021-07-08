@@ -15,7 +15,9 @@ import Header from "components/Appointment/Header"
 import Empty from "components/Appointment/Header"
 import Show from "components/Appointment/Show"
 import Confirm from "components/Appointment/Confirm"
-import Form from "componenets/Appointment/Form"
+import Form from "components/Appointment/Form"
+import Status from "components/Appointment/Status"
+import Error from "components/Appointment/Error"
 
 storiesOf("Button", module)
   .addParameters({
@@ -183,7 +185,7 @@ storiesOf("Appointment", module)
     <Form
       name="Adam"
       interviewers={interviewers}
-      value={2}
+      interviewer={3}
       onSave={action('onSave')}
       onCancel={action('onCancel')}
       />
