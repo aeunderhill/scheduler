@@ -1,32 +1,72 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "components/Application.scss";
 import DayList from "./DayList"
 import "components/DayListItem.js"
+import Appointment from "components/Appointment"
+import axios from "axios"
 
 
-
-const days = [
+const appointments = [
   {
     id: 1,
-    name: "Monday",
-    spots: 2,
+    time: "12pm",
   },
   {
     id: 2,
-    name: "Tuesday",
-    spots: 5,
+    time: "1pm",
+    interview: {
+      student: "Lydia Miller-Jones",
+      interviewer: {
+        id: 1,
+        name: "Sylvia Palmer",
+        avatar: "https://i.imgur.com/LpaY82x.png",
+      }
+    }
   },
   {
     id: 3,
-    name: "Wednesday",
-    spots: 0,
+    time: "3pm",
+    interview: {
+      student: "Michael Jordan",
+      interviewer: {
+        id: 2,
+        name: "Phil Jackson",
+        avatar: "https://i.imgur.com/LpaY82x.png"
+      }
+    }
   },
+  {
+    id: 4,
+    time: "6pm"
+  }
 ];
 
+const appt = appointments.map((appointment) => {
+  return (
+    <Appointment key={appointment.id} id={appointment.id} time={appointment.time} interview={appointment.interview} />
+  )
+})
+
+
+
 export default function Application(props) {
-  const [day, setDay] = useState("Monday")
+  //const [day, setDay] = useState("Monday")
+
+  const [day, setDay] = useState([]);
+  const [dayData, setDayData] = useState([])
+
+
+  useEffect(() => {
+    axios.get('http://localhost:8001/api/days')
+      .then(res => {
+        setDayData(res.data)
+      })
+      .catch(err => console.log(err))
+  }, [])
+
+
   return (
     <main className="layout">
       <section className="sidebar">
@@ -38,7 +78,7 @@ export default function Application(props) {
 <hr className="sidebar__separator sidebar--centered" />
 <nav className="sidebar__menu">
 <DayList
-  days={days}
+  days={dayData}
   day={day}
   setDay={setDay}
 />
@@ -50,7 +90,8 @@ export default function Application(props) {
 /> 
       </section>
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
+        {appt}
+        <Appointment key="last" time="5pm" />
       </section>
     </main>
   );
