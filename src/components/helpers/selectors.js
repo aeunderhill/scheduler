@@ -7,3 +7,10 @@ export function getAppointmentsForDay(state, day) {
   })
   return appointmentArray
 }
+
+
+export function getInterview(state, interview) {
+  if (!interview) {
+    return null
+  };
+};
