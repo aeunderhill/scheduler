@@ -1,4 +1,4 @@
-import { getAppointmentsForDay } from "./selectors";
+import { getAppointmentsForDay, getInterviewsForDay } from "./selectors";
 
 const state = {
   days: [
@@ -42,6 +42,8 @@ const state = {
   }
 };
 
+//tests for get appointments function
+
 test("getAppointmentsForDay returns an array", () => {
   const result = getAppointmentsForDay(state, "Monday");
   expect(Array.isArray(result)).toBe(true);
@@ -68,7 +70,7 @@ test("getAppointmentsForDay returns an empty array when the day is not found", (
   expect(result.length).toEqual(0);
 });
 
-
+//tests for get interview function
 
 test("getInterview returns an object with the interviewer data", () => {
   const result = getInterview(state, state.appointments["3"].interview);
@@ -87,4 +89,32 @@ test("getInterview returns an object with the interviewer data", () => {
 test("getInterview returns null if no interview is booked", () => {
   const result = getInterview(state, state.appointments["2"].interview);
   expect(result).toBeNull();
+});
+
+//test for get interviewsers by day function
+
+test("getInterviewersForDay returns an array", () => {
+  const result = getInterviewersForDay(state, "Monday");
+  expect(Array.isArray(result)).toBe(true);
+});
+
+test("getInterviewersForDay returns an array with a length matching the number of interviews for that day", () => {
+  const result = getInterviewsForDay(state, "Monday");
+  expect(result.length).toEqual(3);
+});
+
+test("getInterviewersForDay returns an array containing the correct interviews objects", () => {
+  const [first, second] = getInterviewsForDay(state, "Tuesday");
+  expect(first).toEqual(state.interviewers["4"]);
+  expect(second).toEqual(state.interviewers["5"]);
+});
+
+test("getInterviewersForDay returns an empty array when the days data is empty", () => {
+  const result = getInterviewersForDay({ days: [] }, "Monday");
+  expect(result.length).toEqual(0);
+});
+
+test("getInterviewersForDay returns an empty array when the day is not found", () => {
+  const result = getInterviewersForDay(state, "Wednesday");
+  expect(result.length).toEqual(0);
 });
