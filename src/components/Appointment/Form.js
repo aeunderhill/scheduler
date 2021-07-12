@@ -13,7 +13,7 @@ export default function Form(props) {
 
   const reset = () => {
     setName("")
-    setInterviewer('null')
+    setInterviewer(null)
   }
 
   function cancel() {
@@ -21,6 +21,12 @@ export default function Form(props) {
     props.onCancel()
   }
 
+  function saveInterviewer() {
+    console.log(currentName, currentInterviewer)
+    props.onSave(currentName, currentInterviewer)
+    
+  }
+//console.log(props)
   return (
     <main className="appointment__card appointment__card--create">
   <section className="appointment__card-left">
@@ -37,12 +43,15 @@ export default function Form(props) {
         */
       />
     </form>
-    <InterviewerList interviewers={props.interviewers} value={props.interviewer} onChange={(event) => setInterviewer(event)} />
+    <InterviewerList 
+    interviewers={props.interviewers} 
+    interviewer={currentInterviewer} 
+    setInterviewer={setInterviewer} />
   </section>
   <section className="appointment__card-right">
     <section className="appointment__actions">
       <Button danger onClick={cancel}>Cancel</Button>
-      <Button confirm onSubmit={(event) => event.preventDefault()} onClick={(event) => props.onSave(currentName, props.interviewer)}>Save</Button>
+      <Button confirm onSubmit={(event) => event.preventDefault()} onClick={saveInterviewer}>Save</Button>
     </section>
   </section>
 </main>

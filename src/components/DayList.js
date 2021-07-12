@@ -5,14 +5,14 @@ import DayListItem from 'components/DayListItem';
 export default function DayList(props){
 console.log("----", props)
   const schedule = props.days.map(dayObj => {
-    const function1 = (argument)=>console.log("this is set day", argument)
+    
     return (
       <DayListItem
       key={dayObj.id}
       name={dayObj.name}
       spots={dayObj.spots}
       selected={dayObj.name === props.day}
-      setDay={function1} />
+      setDay={() => props.setDay(dayObj.name)} />
     )
   })
   return <ul>{schedule}</ul>
