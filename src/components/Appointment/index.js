@@ -8,6 +8,7 @@ import 'components/Appointment/styles.scss'
 import useVisualMode from 'hooks/useVisualMode'
 import Form from 'components/Appointment/Form'
 import Status from 'components/Appointment/Status'
+import Error from 'components/Appointment/Error'
 
 
 export default function Appointment(props) {
@@ -21,6 +22,8 @@ export default function Appointment(props) {
   const CONFIRM = "CONFIRM";
   const EDIT = "EDIT";
   const SHOW = "SHOW";
+  const ERROR_SAVE = "ERROR_SAVE";
+  const ERROR_DELETE = "ERROR_DELETE";
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
@@ -43,24 +46,26 @@ useEffect(() => {
       interviewer
     };
     transition(SAVING);
-    props.bookInterview(props.id, interview).then(
-      () => transition(SHOW)
+    props.bookInterview(props.id, interview)
+    .then(() => transition(SHOW)
+    .catch(() => transition(ERROR_SAVE, true))
     )
   };
 
   function remove() {
     if (mode === CONFIRM) {
-      transition(DELETING)
+      transition(DELETING, true)
       props.cancelInterview(props.id)
       .then(() => transition(EMPTY))
+      .catch(() => transition(ERROR_DELETE, true))
     } else {
       transition(CONFIRM)
     }
   }
 
-  function edit() {
-    transition(EDIT);
-  }
+  //function edit() {
+    //transition(EDIT);
+  //}
 
 
 
@@ -100,5 +105,17 @@ useEffect(() => {
           onSave={save}
           />
        )}
+       {mode === ERROR_SAVE &&
+       <Error 
+          message="Sorry, could not create this appointment."
+          onClose={back}
+          />
+       }
+       {mode === ERROR_DELETE &&
+       <Error 
+          message="Sorry, could not cancel this appointment."
+          onClose={back}
+          />
+       }
     </article>
   )};
