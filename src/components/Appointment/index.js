@@ -46,9 +46,8 @@ useEffect(() => {
       interviewer
     };
     transition(SAVING);
-    props.bookInterview(props.id, interview)
-    .then(() => transition(SHOW)
-    .catch(() => transition(ERROR_SAVE, true))
+    props.bookInterview(props.id, interview).then(() => transition(SHOW)
+    //.catch(() => transition(ERROR_SAVE, true))
     )
   };
 
