@@ -22,7 +22,7 @@ export function getInterview(state, interview) {
   };
 };
 
-export function getInterviewsForDay(state, day) {
+export function getInterviewersForDay(state, day) {
   let interviewsArray = [];
   state.days.map(dayObj => {
     if (dayObj.name === day) {
@@ -31,3 +31,4 @@ export function getInterviewsForDay(state, day) {
   })
   return interviewsArray
 }
+
