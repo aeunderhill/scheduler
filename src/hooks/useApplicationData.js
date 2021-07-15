@@ -42,8 +42,6 @@ return spots
 //save/book interview function
 
 function bookInterview(id, interview) {
-  //console.log(interview)
-  //console.log(id, interview);
   const appointment = {
     ...state.appointments[id],
     interview: { ...interview }

@@ -4,8 +4,6 @@ import InterviewerList from 'components/InterviewerList';
 
 
 
-
-
 export default function Form(props) {
 
 
@@ -39,7 +37,6 @@ export default function Form(props) {
 //function to save interview usually in place of validate function below
 
   function saveInterviewer() {
-    console.log(currentName, currentInterviewer)
     props.onSave(currentName, currentInterviewer)
     
   };
