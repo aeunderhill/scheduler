@@ -25,6 +25,8 @@ export default function Form(props) {
     props.onCancel()
   }
 
+  //function to validate that the error message is showing
+
   function validate() {
     if (currentName === "") {
       setError("Student name cannot be blank");
@@ -33,6 +35,8 @@ export default function Form(props) {
     setError("");
     props.onSave(currentName, currentInterviewer);
   }
+
+//function to save interview usually in place of validate function below
 
   function saveInterviewer() {
     console.log(currentName, currentInterviewer)

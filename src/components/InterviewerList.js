@@ -4,13 +4,6 @@ import InterviewerListItem from './InterviewerListItem';
 import PropTypes from 'prop-types';
 
 
-
-//Our InterviewerList takes in three props:
-
-//interviewers:array - an array of objects containing the information of each interviewer
-//interviewer:number - the id of an interviewer
-//setInterviewer:function - a function that accepts an interviewer id
-
 export default function InterviewerList(props) {
   InterviewerList.propTypes = {
     interviewers: PropTypes.array.isRequired

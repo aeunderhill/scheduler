@@ -1,12 +1,10 @@
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import "components/Application.scss";
 import DayList from "./DayList"
-import InterviewerList from "./InterviewerList"
 import "components/DayListItem.js"
 import Appointment from "components/Appointment"
-import axios from "axios"
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "./helpers/selectors"
 import useApplicationData from "hooks/useApplicationData";
 

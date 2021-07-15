@@ -13,7 +13,7 @@ import Error from 'components/Appointment/Error'
 
 export default function Appointment(props) {
 
-  //const [mode, setMode] = useState(EMPTY);
+
 
   const EMPTY = "EMPTY";
   const CREATE = "CREATE";
@@ -61,11 +61,6 @@ useEffect(() => {
       transition(CONFIRM)
     }
   }
-
-  //function edit() {
-    //transition(EDIT);
-  //}
-
 
 
   return (
