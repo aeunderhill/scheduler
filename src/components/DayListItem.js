@@ -10,10 +10,10 @@ const formatSpots = spots => {
   }
   if (spots === 1) {
     return `${spots} spot remaining`;
-  }
+  };
   
     return `${spots} spots remaining`;
-  }
+  };
 
 
 

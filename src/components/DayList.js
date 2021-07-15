@@ -16,4 +16,4 @@ console.log("----", props)
     )
   })
   return <ul>{schedule}</ul>
-}
+};

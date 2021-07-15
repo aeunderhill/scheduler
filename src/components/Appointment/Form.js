@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Button from  'components/Button';
-import InterviewerList from 'components/InterviewerList'
+import InterviewerList from 'components/InterviewerList';
 
 
 
@@ -11,19 +11,19 @@ export default function Form(props) {
 
   const [currentName, setName] = useState(props.name || "");
 
-  const [currentInterviewer, setInterviewer] = useState(props.interviewer || null)
+  const [currentInterviewer, setInterviewer] = useState(props.interviewer || null);
 
   const [error, setError] = useState("");
 
   const reset = () => {
     setName("")
     setInterviewer(null)
-  }
+  };
 
   function cancel() {
     reset()
     props.onCancel()
-  }
+  };
 
   //function to validate that the error message is showing
 
@@ -31,10 +31,10 @@ export default function Form(props) {
     if (currentName === "") {
       setError("Student name cannot be blank");
       return;
-    }
+    };
     setError("");
     props.onSave(currentName, currentInterviewer);
-  }
+  };
 
 //function to save interview usually in place of validate function below
 
@@ -42,8 +42,8 @@ export default function Form(props) {
     console.log(currentName, currentInterviewer)
     props.onSave(currentName, currentInterviewer)
     
-  }
-//console.log(props)
+  };
+
   return (
     <main className="appointment__card appointment__card--create">
   <section className="appointment__card-left">
@@ -77,4 +77,4 @@ export default function Form(props) {
   </section>
 </main>
   )
-}
+};

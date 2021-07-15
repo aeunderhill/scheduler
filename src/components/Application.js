@@ -2,10 +2,10 @@
 import React from "react";
 
 import "components/Application.scss";
-import DayList from "./DayList"
-import "components/DayListItem.js"
-import Appointment from "components/Appointment"
-import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "./helpers/selectors"
+import DayList from "./DayList";
+import "components/DayListItem.js";
+import Appointment from "components/Appointment";
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "./helpers/selectors";
 import useApplicationData from "hooks/useApplicationData";
 
 
@@ -22,11 +22,10 @@ export default function Application(props) {
   }
    = useApplicationData();
 
-  const appointmentObjs = getAppointmentsForDay(state, state.day)
+  const appointmentObjs = getAppointmentsForDay(state, state.day);
   
   const appt = appointmentObjs.map((appointmentObj) => {
     const interview = getInterview(state, appointmentObj.interview);
-    //console.log(interview)
     const interviewers = getInterviewersForDay(state,  state.day);
   
     return (
@@ -38,7 +37,7 @@ export default function Application(props) {
       bookInterview={bookInterview} 
       cancelInterview={cancelInterview}/>
     )
-  })
+  });
 
 
 
@@ -70,6 +69,6 @@ export default function Application(props) {
       </section>
     </main>
   );
-}
+};
 
 

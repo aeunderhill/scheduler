@@ -27,5 +27,5 @@ return (
     {interviewers}
   </ul>
   </section>
-)}
+)};
 

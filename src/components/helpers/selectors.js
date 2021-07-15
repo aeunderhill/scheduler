@@ -8,7 +8,7 @@ export function getAppointmentsForDay(state, day) {
     }
   })
   return appointmentArray
-}
+};
 
 
 export function getInterview(state, interview) {
@@ -30,5 +30,5 @@ export function getInterviewersForDay(state, day) {
     }
   })
   return interviewsArray
-}
+};
 

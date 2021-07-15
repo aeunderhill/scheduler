@@ -3,12 +3,12 @@ import 'components/Appointment/styles.scss';
 import Header from 'components/Appointment/Header';
 import Show from 'components/Appointment/Show';
 import Empty from 'components/Appointment/Empty';
-import Confirm from 'components/Appointment/Confirm'
-import 'components/Appointment/styles.scss'
-import useVisualMode from 'hooks/useVisualMode'
-import Form from 'components/Appointment/Form'
-import Status from 'components/Appointment/Status'
-import Error from 'components/Appointment/Error'
+import Confirm from 'components/Appointment/Confirm';
+import 'components/Appointment/styles.scss';
+import useVisualMode from 'hooks/useVisualMode';
+import Form from 'components/Appointment/Form';
+import Status from 'components/Appointment/Status';
+import Error from 'components/Appointment/Error';
 
 
 export default function Appointment(props) {
@@ -35,9 +35,9 @@ useEffect(() => {
   }
       
   if (props.interview && mode === EMPTY) {
-        transition(SHOW)
+        transition(SHOW);
   }
-}, [mode, transition, props.interview])
+}, [mode, transition, props.interview]);
 
 
   function save(name, interviewer) {
@@ -60,7 +60,7 @@ useEffect(() => {
     } else {
       transition(CONFIRM)
     }
-  }
+  };
 
 
   return (
