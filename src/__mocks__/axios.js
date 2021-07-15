@@ -79,7 +79,7 @@ export default {
       });
     }
   }),
-  put: jest.fn(id => {
+  put: jest.fn(() => {
       return Promise.resolve({
         status: 200,
         statusText: "OK",
@@ -87,7 +87,7 @@ export default {
       });
     
   }),
-  delete: jest.fn(id => {
+  delete: jest.fn((id) => {
       return Promise.resolve({
         status: 200,
         statusText: "OK",

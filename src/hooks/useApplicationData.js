@@ -25,7 +25,6 @@ useEffect(() => {
   })
 }, [])
 
-/*useEffect(() => {     Promise.all([       axios.get("http://localhost:8001/api/days"),       axios.get("http://localhost:8001/api/appointments"),       axios.get("http://localhost:8001/api/interviewers")     ]).then(       ([{ data: days }, { data: appointments }, { data: interviewers }]) =>         dispatch({                      days,           appointments,           interviewers         })     );   }, []);*/
 
 function getSpotsForDay(appState, appointments) {
 

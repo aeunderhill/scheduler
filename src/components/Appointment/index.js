@@ -46,9 +46,9 @@ useEffect(() => {
       interviewer
     };
     transition(SAVING);
-    props.bookInterview(props.id, interview).then(() => transition(SHOW)
-    //.catch(() => transition(ERROR_SAVE, true))
-    )
+    props.bookInterview(props.id, interview)
+    .then(() => transition(SHOW))
+    .catch(() => transition(ERROR_SAVE, true))
   };
 
   function remove() {
@@ -87,7 +87,7 @@ useEffect(() => {
                             interviewers={props.interviewers} 
                             onCancel={back} 
                             onSave={save}/>}
-      {mode === SAVING && <Status meesage="Saving" />}
+      {mode === SAVING && <Status message="Saving" />}
       {mode === DELETING && <Status message="Deleting" />}
       {mode === CONFIRM && 
       <Confirm
