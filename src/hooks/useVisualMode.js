@@ -14,9 +14,14 @@ export default function useVisualMode(initial) {
   }
 
   const back = () => {
+    console.log("hey")
     if (history.length > 1) {
-      history.pop();
-      setMode(history[history.length - 1])
+      setMode(history[history.length - 2])
+      setHistory(prev => [...prev].slice(0, -1))
+    
+    } else {
+      setMode(initial)
+      setHistory(initial)
     }
   }
 
