@@ -40,10 +40,9 @@ export default function Form(props) {
 
 //function to save interview usually in place of validate function below
 
-  function saveInterviewer() {
-    props.onSave(currentName, currentInterviewer)
-    
-  };
+  //function saveInterviewer() {
+    //props.onSave(currentName, currentInterviewer)
+  //};
 
   return (
     <main className="appointment__card appointment__card--create">
